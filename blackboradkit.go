@@ -261,6 +261,9 @@ func BBinit(dstStruct interface{}, groupName string) {
 		for i := 0; i < v.Elem().NumField(); i++ {
 			fieldName := t.Field(i).Name
 			tag := t.Field(i).Tag.Get("readme")
+			if tag == "" {
+				tag = t.Field(i).Tag.Get("tag")
+			}
 
 			vType := t.Field(i).Type
 
